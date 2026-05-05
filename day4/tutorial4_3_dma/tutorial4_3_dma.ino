@@ -23,11 +23,13 @@ void setup() {
   // ==========================================
   // 1. CPU (forループ) によるデータ転送
   // ==========================================
+  noInterrupts(); // 割込みに邪魔されないよう割込み禁止にする
   uint32_t start_time = micros(); // 開始時間(マイクロ秒)
   for (int i = 0; i < DATA_SIZE; i++) {
     dst_cpu[i] = src_data[i];
   }
   cpu_time = micros() - start_time;
+  interrupts(); // 割込み禁止を解除する
 
   // ==========================================
   // 2. DMA によるデータ転送
@@ -41,6 +43,7 @@ void setup() {
   channel_config_set_read_increment(&c, true);
   channel_config_set_write_increment(&c, true);
 
+  noInterrupts(); // 割込みに邪魔されないよう割込み禁止にする
   start_time = micros(); // 開始時間(マイクロ秒)
   dma_channel_configure(
     dma_chan,          // チャンネル
@@ -54,6 +57,7 @@ void setup() {
   // 本来はここでCPUは別の処理ができるが，今回は時間計測のため転送完了を待つ
   dma_channel_wait_for_finish_blocking(dma_chan); 
   dma_time = micros() - start_time;
+  interrupts(); // 割込み禁止を解除する
   
   // リソースの解放
   dma_channel_unclaim(dma_chan);
