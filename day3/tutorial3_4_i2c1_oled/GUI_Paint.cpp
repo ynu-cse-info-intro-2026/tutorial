@@ -79,7 +79,7 @@
 *
 ******************************************************************************/
 #include "GUI_Paint.h"
-#include "DEV_Config_OLED.h"
+#include "DEV_Config.h"
 #include "Debug_OLED.h"
 #include <stdio.h>
 #include <stdint.h>

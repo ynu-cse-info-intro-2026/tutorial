@@ -31,7 +31,7 @@
 #ifndef __OLED_DRIVER_H
 #define __OLED_DRIVER_H		
 
-#include "DEV_Config_OLED.h"
+#include "DEV_Config.h"
 
 /********************************************************************************
 function:	

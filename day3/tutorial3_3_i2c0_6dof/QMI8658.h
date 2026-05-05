@@ -1,7 +1,7 @@
 #ifndef QMI8658_H
 #define QMI8658_H
 
-#include "DEV_Config_6DoF.h"
+#include "DEV_Config.h"
 #include "Wire.h"
 
 #ifndef M_PI

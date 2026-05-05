@@ -1,9 +1,8 @@
-#ifndef _DEV_CONFIG_OLED_H_
-#define _DEV_CONFIG_OLED_H_
+#ifndef _DEV_CONFIG_H_
+#define _DEV_CONFIG_H_
 
 //#include "Arduino.h"
 #include "Wire.h"
-#include "Debug_OLED.h"
 
 //
 // 6DoF Interfaces
@@ -22,6 +21,8 @@
 #define SENSOR_I2C_PORT (0)
 #define SENSOR_SDA_PIN  (8)
 #define SENSOR_SCL_PIN  (9)
+
+void DEV_Delay_ms(uint32_t xms);
 
 void DEV_I2C_Write_Byte(uint8_t i2c_num,uint8_t addr, uint8_t value);
 void DEV_I2C_Write_nByte(uint8_t i2c_num,uint8_t addr, uint8_t *pData, uint32_t len);

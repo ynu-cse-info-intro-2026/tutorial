@@ -9,11 +9,19 @@
 * | Info        :   Basic version
 *
 ******************************************************************************/
-#include "DEV_Config_OLED.h"
+#include "DEV_Config.h"
 
 //
 // 6DoF Interface
 //
+
+/**
+ * delay x ms
+**/
+void DEV_Delay_ms(uint32_t xms)
+{
+    delay(xms);
+}
 
 /******************************************************************************
 function:	I2C Function initialization and transfer
