@@ -3,7 +3,6 @@
 
 #include "DEV_Config_6DoF.h"
 #include "Wire.h"
-#include "Debug_6DoF.h"
 
 #ifndef M_PI
 #define M_PI (3.14159265358979323846f)
