@@ -6,6 +6,9 @@ uint32_t src_data[DATA_SIZE];     // 転送元データ
 uint32_t dst_cpu[DATA_SIZE];      // CPUコピー用の転送先
 uint32_t dst_dma[DATA_SIZE];      // DMA転送用の転送先
 
+uint32_t cpu_time;  // CPU転送時間
+uint32_t dma_time;  // DMA転送時間
+
 void setup() {
   Serial.begin(115200);
   delay(3000); // シリアルモニタを開くまでの猶予時間
@@ -24,8 +27,8 @@ void setup() {
   for (int i = 0; i < DATA_SIZE; i++) {
     dst_cpu[i] = src_data[i];
   }
-  uint32_t cpu_time = micros() - start_time;
-  Serial.printf("CPUによる転送時間: %lu [us]\n", cpu_time);
+  cpu_time = micros() - start_time;
+
   // ==========================================
   // 2. DMA によるデータ転送
   // ==========================================
@@ -50,13 +53,13 @@ void setup() {
 
   // 本来はここでCPUは別の処理ができるが，今回は時間計測のため転送完了を待つ
   dma_channel_wait_for_finish_blocking(dma_chan); 
-  uint32_t dma_time = micros() - start_time;
+  dma_time = micros() - start_time;
   
-  Serial.printf("DMAによる転送時間: %lu [us]\n", dma_time);
-
   // リソースの解放
   dma_channel_unclaim(dma_chan);
 }
 
 void loop() {// メインループは何もしない
+  Serial.printf("CPU: %lu [us] DMA: %lu [us]\n", cpu_time, dma_time);
+  delay(1000);
 }
