@@ -49,25 +49,10 @@ void setup() {
 
   OLED_1in5_Display(BlackImage);
   delay(2000);
-
-  Paint_Clear(BLACK);
-  Paint_DrawString_EN(5, 10, "128 x 128 Pixels", &Font12, WHITE, BLACK);
-  Paint_DrawString_EN(5, 25, "OLED-1.5-Demo", &Font12, WHITE, BLACK);
-  Paint_DrawString_EN(5, 40, "Waveshare", &Font12, WHITE, BLACK);
-  Paint_DrawRectangle(0, 55, OLED_1in5_WIDTH - 1, 65, 0x01, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-  Paint_DrawRectangle(0, 65, OLED_1in5_WIDTH - 1, 75, 0x02, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-  Paint_DrawRectangle(0, 75, OLED_1in5_WIDTH - 1, 85, 0x04, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-  Paint_DrawRectangle(0, 85, OLED_1in5_WIDTH - 1, 95, 0x08, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-  Paint_DrawRectangle(0, 95, OLED_1in5_WIDTH - 1, 105, 0x0A, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-  Paint_DrawRectangle(0, 105, OLED_1in5_WIDTH - 1, 115, 0x0C, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-  Paint_DrawRectangle(0, 115, OLED_1in5_WIDTH - 1, 125, 0x0F, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-  Paint_Clear(WHITE);
-  OLED_1in5_Display(BlackImage);
-  
 }
 
 void loop() {
-  for(int i=0; i<10; i++) {
+  for(int i=0; i<24; i++) {
     Paint_Clear(BLACK);
     Paint_DrawRectangle(i*5, i*5, 15+i*5, 15+i*5, 0x0F, DOT_PIXEL_1X1, DRAW_FILL_FULL);
     OLED_1in5_Display(BlackImage);
